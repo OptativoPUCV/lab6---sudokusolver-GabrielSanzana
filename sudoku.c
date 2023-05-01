@@ -50,8 +50,8 @@ int is_valid(Node* n){
     valido = calloc(sizeof(int),10);
        for(j=0;j<9;j++)
        {
-         for(int z = 0; z < 9; z++)
-            if(is_valid(n->sudo[i][k]) == valido[z])
+         for(z = 0; z < 9; z++)
+            if(is_valid(n) == valido[z])
               return 1;
            
          if(n->sudo[i][j] !=0)
