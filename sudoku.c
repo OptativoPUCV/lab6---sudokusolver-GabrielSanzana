@@ -60,6 +60,7 @@ int is_valid(Node* n){
         }
       }
   }
+free(valido);
 for(i=0;i<9;i++)
   {
     valido = calloc(sizeof(int),10);
@@ -74,7 +75,7 @@ for(i=0;i<9;i++)
         }
       }
   }
-
+free(valido);
   for(int k=0 ; k<9 ; k++)
   {
     for(p=0;p<9;p++){
@@ -89,7 +90,7 @@ for(i=0;i<9;i++)
           valido[n->sudo[i][j]] = 1;
       }  
   }
-    
+    free(valido);
   return 1;
 }
 
