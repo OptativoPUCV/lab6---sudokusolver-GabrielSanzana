@@ -55,16 +55,19 @@ int is_valid(Node* n){
         {
           if(valido[n->sudo[i][j]] == 1)
             return 0;
+          else if (n->sudo[j][i] !=0)
+          {
+            if(valido[n->sudo[j][i]] == 1 )
+              return 0;
+            else valido[n->sudo[j][i]] = 1;
+          }
           else
             valido[n->sudo[i][j]] = 1;
         }
+        
       }
-  }
-free(valido);
-for(i=0;i<9;i++)
-  {
     valido = calloc(sizeof(int),10);
-      for(j=0;j<9;j++)
+     /* for(j=0;j<9;j++)
       {           
         if(n->sudo[j][i] !=0)
         {
@@ -74,7 +77,11 @@ for(i=0;i<9;i++)
             valido[n->sudo[j][i]] = 1;
         }
       }
+      */
+    
   }
+free(valido);
+
 free(valido);
   for(int k=0 ; k<9 ; k++)
   {
