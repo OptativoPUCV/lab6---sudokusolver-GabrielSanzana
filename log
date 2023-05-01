@@ -60,3 +60,29 @@ sudoku.c:47:7: error: unused variable ‘valido’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 812ab67
+Mon 01 May 2023 02:22:41 AM UTC: 
+ sudoku.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:54:36: error: ‘k’ undeclared (first use in this function)
+   54 |             if(is_valid(n->sudo[i][k]) == valido[z])
+      |                                    ^
+sudoku.c:54:36: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:47:22: error: unused variable ‘p’ [-Werror=unused-variable]
+   47 |   int *valido, i, j, p;
+      |                      ^
+sudoku.c: At top level:
+sudoku.c:73:3: error: expected identifier or ‘(’ before ‘return’
+   73 |   return 1;
+      |   ^~~~~~
+sudoku.c:74:1: error: expected identifier or ‘(’ before ‘}’ token
+   74 | }
+      | ^
+sudoku.c: In function ‘is_valid’:
+sudoku.c:72:3: error: control reaches end of non-void function [-Werror=return-type]
+   72 |   }
+      |   ^
+cc1: all warnings being treated as errors
+Compilation failed
+47a46bb
