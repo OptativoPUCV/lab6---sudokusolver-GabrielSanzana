@@ -49,9 +49,23 @@ int is_valid(Node* n){
 }
 
 
-List* get_adj_nodes(Node* n){
-    List* list=createList();
-    return list;
+List* get_adj_nodes(Node* n) {
+    List* adj_nodes = createList(); // Creamos una nueva lista para los nodos adyacentes
+    
+    // Recorremos cada fila y columna para encontrar las casillas vacías y agregar valores
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            if (n->state[row][col] == 0) { // Si la casilla está vacía, agregamos nuevos nodos
+                for (int val = 1; val <= 9; val++) { // Recorremos los valores posibles (1-9)
+                    Node* adj_node = copy(n); // Copiamos el nodo original
+                    adj_node->state[row][col] = val; // Agregamos un valor posible a la casilla vacía
+                    addLast(adj_nodes, adj_node); // Agregamos el nodo adyacente a la lista
+                }
+                return adj_nodes; // Si encontramos una casilla vacía, retornamos la lista actual
+            }
+        }
+    }
+    return adj_nodes; // Si no encontramos casillas vacías, retornamos la lista vacía
 }
 
 

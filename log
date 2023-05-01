@@ -2,3 +2,20 @@ Mon 01 May 2023 12:44:31 AM UTC:
  tests:  0|5
 total_score: 0/70
 6582fa7
+Mon 01 May 2023 12:51:37 AM UTC: 
+ sudoku.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:58:18: error: ‘Node’ has no member named ‘state’
+   58 |             if (n->state[row][col] == 0) { // Si la casilla está vacía, agregamos nuevos nodos
+      |                  ^~
+sudoku.c:61:29: error: ‘Node’ has no member named ‘state’
+   61 |                     adj_node->state[row][col] = val; // Agregamos un valor posible a la casilla vacía
+      |                             ^~
+sudoku.c:62:21: error: implicit declaration of function ‘addLast’ [-Werror=implicit-function-declaration]
+   62 |                     addLast(adj_nodes, adj_node); // Agregamos el nodo adyacente a la lista
+      |                     ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+6993cef
