@@ -44,8 +44,17 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-
-    return 1;
+  int valido[10], i, j;
+  for(i=0;i<9;i++)
+  {
+       for(j=0;j<9;j++)
+       {
+         if(valido[j] != 0)
+           if(valido[j] != 1)
+              valido[j] = 1;
+       } 
+  }
+  return 1;
 }
 
 
