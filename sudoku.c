@@ -49,13 +49,11 @@ int is_valid(Node* n){
   {
        for(j=0;j<9;j++)
        {
-         if(valido[j] != 0)
-           continue;
-          else 
-           {
-             valido[j] = 1;
-             return 1;
-           }
+         if(n->sudo[i][j] !=0)
+         {
+           return 0;
+         }
+         else return 1;
        } 
   }
   return 1;
