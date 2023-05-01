@@ -19,3 +19,9 @@ sudoku.c:62:21: error: implicit declaration of function ‘addLast’ [-Werror=i
 cc1: all warnings being treated as errors
 Compilation failed
 6993cef
+Mon 01 May 2023 01:25:25 AM UTC: 
+ sudoku.c | 25 ++++++++++++-------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
+ tests:  2|4
+total_score: 15/70
+2eaaad7
