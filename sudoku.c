@@ -50,15 +50,15 @@ int is_valid(Node* n){
        for(j=0;j<9;j++)
        {
          if(valido[j] != 0)
-         {
-           if(valido[j] != 1)
-              valido[j] = 1;
-            else
+           continue;
+          else 
+           {
+             valido[j] = 1;
              return 1;
-         }
+           }
        } 
   }
-  return 0;
+  return 1;
 }
 
 
