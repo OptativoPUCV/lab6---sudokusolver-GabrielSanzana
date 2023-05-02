@@ -69,7 +69,7 @@ int is_valid(Node* n){
     int row=8, col=8;
    for (int subgrid = 0; subgrid < 9; subgrid++) {
         int nums[10] = {0};
-        for (int p = 0; p < 9; p++) {
+        for ( p = 0; p < 9; p++) {
             row = 3 * (subgrid / 3) + (p / 3);
             col = 3 * (subgrid % 3) + (p % 3);
             int num = n->sudo[row][col];
