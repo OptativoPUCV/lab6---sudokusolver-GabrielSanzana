@@ -74,9 +74,9 @@ int is_valid(Node* n){
       printf("Error: No se pudo asignar memoria para valido.\n");
       return 0;
   }
-  for(int p = 0; p < 9; p++) {
-      int i = 3 * (k / 3) + (p / 3);
-      int j = 3 * (k % 3) + (p % 3);
+  for(p = 0; p < 9; p++) {
+      i = 3 * (k / 3) + (p / 3);
+      j = 3 * (k % 3) + (p % 3);
       int num = n->sudo[i][j];
       if (num == 0) continue;
       if (valido[num] != 0) {
