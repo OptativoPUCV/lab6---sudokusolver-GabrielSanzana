@@ -128,32 +128,29 @@ int is_final(Node* n){
   return 1;
 }
 
-Node* DFS(Node* node, int* cont){
-    if(is_final(node)){
-        return node;
+Node* DFS(Node* initial, int* cont){
+  Stack* S = createStack();
+
+  push(S, initial);
+
+  while(S!=NULL)
+  {
+    Node *auxEstado = top(S);
+    pop(S);
+    if(is_final(auxEstado))
+      return auxEstado;
+
+    List *listaNodosAdj = get_adj_nodes(auxEstado);
+    for(Node *auxNodo = first(listaNodosAdj); auxNodo!=NULL ; auxNodo = next(listaNodosAdj))
+    {
+      push(S, auxNodo); 
     }
-    int i,j;
-    for(i=0;i<DIM;i++){
-        for(j=0;j<DIM;j++){
-            if(node->sudo[i][j] == 0){
-                int k;
-                for(k=1;k<=DIM;k++){
-                    Node* new_node = copy_node(node);
-                    new_node->sudo[i][j] = k;
-                    (*cont)++;
-                    if(is_valid(new_node)){
-                        Node* sol = DFS(new_node, cont);
-                        if(sol != NULL){
-                            return sol;
-                        }
-                    }
-                    free_node(new_node);
-                }
-                return NULL; // se agrega esta línea en caso de no encontrar solución
-            }
-        }
-    }
-    return NULL;
+
+    free(auxEstado);
+    (*cont)++;
+  }
+
+  return NULL;
 }
 
 
