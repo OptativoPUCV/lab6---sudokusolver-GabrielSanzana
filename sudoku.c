@@ -51,7 +51,7 @@ int is_valid(Node* n){
     valido = calloc(sizeof(int),10);
       for(j=0;j<9;j++)
       {           
-        if(n->sudo[i][j] !=0)
+        if(n->sudo[i][j] ==0)
         {
           if(valido[n->sudo[i][j]] == 1)
             return 0;
@@ -63,7 +63,7 @@ int is_valid(Node* n){
     valido = calloc(sizeof(int),10);
       for(j=0;j<9;j++)
       {           
-        if(n->sudo[j][i] !=0)
+        if(n->sudo[j][i] ==0)
         {
           if(valido[n->sudo[j][i]] == 1 )
             return 0;
@@ -80,7 +80,7 @@ int is_valid(Node* n){
       i=3*(k/3) + (p/3) ;
       j=3*(k%3) + (p%3) ;
       valido = calloc(sizeof(int),10);
-      if(n->sudo[i][j] !=0)
+      if(n->sudo[i][j] ==0)
       {
         if(valido[n->sudo[i][j]] == 1 )
           return 0;
