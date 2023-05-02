@@ -56,7 +56,7 @@ int is_valid(Node* n){
             valido[num] = 1;
         }
     
-    int valido[10] = {0};
+    valido[10] = {0};
       for (j = 0; j < 9; j++) {
             int num = n->sudo[j][i];
             if (num == 0) continue;
