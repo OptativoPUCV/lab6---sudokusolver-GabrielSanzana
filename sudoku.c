@@ -67,22 +67,32 @@ int is_valid(Node* n){
   
   }
 
-  for(int k=0 ; k<9 ; k++)
-  {
-     valido = calloc(sizeof(int),10);
-    for(p=0;p<9;p++){
-        i=3*(k/3) + (p/3) ;
-        j=3*(k%3) + (p%3) ;
-        if(n->sudo[i][j] == 0 )
-        {
-        if(valido[n->sudo[i][j]] == 1 )
-          return 0;
-        else
-          valido[n->sudo[i][j]] = 1;
-        }
-    }
+  for(int k = 0; k < 9; k++)
+{
+  int* valido = calloc(10, sizeof(int));
+  if (valido == NULL) {
+      printf("Error: No se pudo asignar memoria para valido.\n");
+      return 0;
+  }
+  for(int p = 0; p < 9; p++) {
+      int i = 3 * (k / 3) + (p / 3);
+      int j = 3 * (k % 3) + (p % 3);
+      int num = n->sudo[i][j];
+      if (num == 0) continue;
+      if (valido[num] != 0) {
+          if (valido[num] == 1) {
+              free(valido);
+              return 0;
+          }
+          else {
+              valido[num] = 1;
+          }
+      }
   }
   free(valido);
+}
+return 1;
+
   return 1;
 }
 
