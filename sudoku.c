@@ -44,53 +44,45 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-  int *valido, i, j, p;
+  int valido[10] = {0}; // arreglo de enteros de largo 10, inicializado en 0
+  int i, j, k, p;
 
-  for(i=0;i<9;i++)
-  {
-    valido = calloc(sizeof(int),10);
-      for (j = 0; j < 9; j++) {
-            int num = n->sudo[i][j];
-            if (num == 0) continue;
-            if (valido[num]) {
-                free(valido);
-                return 0;
-            }
-            valido[num] = 1;
-        }
-    free(valido);
-    valido = calloc(sizeof(int),10);
-      for (j = 0; j < 9; j++) {
-            int num = n->sudo[j][i];
-            if (num == 0) continue;
-            if (valido[num]) {
-                free(valido);
-                return 0;
-            }
-            valido[num] = 1;
-        }
-    free(valido);
-  
-  }
-
-  for(int k=0 ; k<9 ; k++)
-  {
-     valido = calloc(sizeof(int),10);
-    for(p=0;p<9;p++){
-        i=3*(k/3) + (p/3) ;
-        j=3*(k%3) + (p%3) ;
-        if(n->sudo[i][j] == 0 )
-        {
-        if(valido[n->sudo[i][j]] == 1 ) {
-            free(valido);
-            return 0;
-        }
-        else
-          valido[n->sudo[i][j]] = 1;
-        }
+  // validación de filas y columnas
+  for(i = 0; i < 9; i++) {
+    // validación de fila i
+    for(j = 0; j < 9; j++) {
+      int num = n->sudo[i][j];
+      if (num == 0) continue;
+      if (valido[num]) return 0;
+      valido[num] = 1;
     }
-    free(valido);
+    // reiniciar arreglo para validar siguiente fila
+    memset(valido, 0, sizeof(int)*10);
+    // validación de columna i
+    for(j = 0; j < 9; j++) {
+      int num = n->sudo[j][i];
+      if (num == 0) continue;
+      if (valido[num]) return 0;
+      valido[num] = 1;
+    }
+    // reiniciar arreglo para validar siguiente columna
+    memset(valido, 0, sizeof(int)*10);
   }
+
+  // validación de submatrices de 3x3
+  for(k = 0; k < 9; k++) {
+    // submatriz k
+    memset(valido, 0, sizeof(int)*10);
+    for(p = 0; p < 9; p++) {
+      i = 3*(k/3) + (p/3);
+      j = 3*(k%3) + (p%3);
+      int num = n->sudo[i][j];
+      if (num == 0) continue;
+      if (valido[num]) return 0;
+      valido[num] = 1;
+    }
+  }
+  // estado/nodo es válido
   return 1;
 }
 
