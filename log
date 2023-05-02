@@ -523,3 +523,34 @@ Tue 02 May 2023 04:52:40 AM UTC:
  tests:  6|2
 total_score: 45/70
 c8f2d6d
+Tue 02 May 2023 04:53:58 AM UTC: 
+ sudoku.c | 70 +++++++++++++++++++++++++++++++++++-----------------------------
+ 1 file changed, 38 insertions(+), 32 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:47:22: error: unused variable ‘p’ [-Werror=unused-variable]
+   47 |   int *valido, i, j, p;
+      |                      ^
+sudoku.c: At top level:
+sudoku.c:72:3: error: expected identifier or ‘(’ before ‘for’
+   72 |   for(int k=0 ; k<9 ; k++)
+      |   ^~~
+sudoku.c:72:18: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+   72 |   for(int k=0 ; k<9 ; k++)
+      |                  ^
+sudoku.c:72:24: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘++’ token
+   72 |   for(int k=0 ; k<9 ; k++)
+      |                        ^~
+sudoku.c:87:3: error: expected identifier or ‘(’ before ‘return’
+   87 |   return 1;
+      |   ^~~~~~
+sudoku.c:88:1: error: expected identifier or ‘(’ before ‘}’ token
+   88 | }
+      | ^
+sudoku.c: In function ‘is_valid’:
+sudoku.c:70:3: error: control reaches end of non-void function [-Werror=return-type]
+   70 |   }
+      |   ^
+cc1: all warnings being treated as errors
+Compilation failed
+9912bf3
