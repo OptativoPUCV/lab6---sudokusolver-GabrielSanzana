@@ -104,11 +104,14 @@ List* get_adj_nodes(Node* n){
                    Node* nodo = copy(n);
                    nodo->sudo[i][j] = valor;
                    if(is_valid(nodo))
-                      pushBack(lista, nodo);
+                   {
+                    printf("%d\n ",nodo->sudo[i][j]);
+                    pushBack(lista, nodo);
+                   }
                    else
-                      free(nodo); 
+                    free(nodo);
                }
-             break;
+               break;
            }
        }
        if(n->sudo[i][j]==0) break;
