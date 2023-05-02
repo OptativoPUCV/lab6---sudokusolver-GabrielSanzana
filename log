@@ -908,3 +908,22 @@ sudoku.c:146:42: error: request for member ‘next’ in something not a structu
 cc1: all warnings being treated as errors
 Compilation failed
 fa6ba88
+Tue 02 May 2023 06:10:14 AM UTC: 
+ sudoku.c | 41 ++++++++++++++++++++++-------------------
+ 1 file changed, 22 insertions(+), 19 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:136:15: error: ‘DIM’ undeclared (first use in this function)
+  136 |     for(i=0;i<DIM;i++){
+      |               ^~~
+sudoku.c:136:15: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:141:38: error: implicit declaration of function ‘copy_node’ [-Werror=implicit-function-declaration]
+  141 |                     Node* new_node = copy_node(node);
+      |                                      ^~~~~~~~~
+sudoku.c:141:38: error: initialization of ‘Node *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+sudoku.c:150:21: error: implicit declaration of function ‘free_node’ [-Werror=implicit-function-declaration]
+  150 |                     free_node(new_node);
+      |                     ^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+69b4683

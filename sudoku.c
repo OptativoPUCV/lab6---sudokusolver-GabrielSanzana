@@ -128,31 +128,33 @@ int is_final(Node* n){
   return 1;
 }
 
-Node* DFS(Node* n, int* cont) {
-    Stack* S = createStack();
-    push(S, n);
-
-    while (!isEmpty(S)) {
-        Node* current = top(S);
-        pop(S);
-
-        if (is_final(current)) {
-            return current;
-        }
-
-        NodeList* adjacentNodes = get_adjacent_nodes(current);
-        while (adjacentNodes != NULL) {
-            push(S, adjacentNodes->node);
-            adjacentNodes = adjacentNodes->next;
-        }
-
-        free(current);
-        (*cont)++;
+Node* DFS(Node* node, int* cont){
+    if(is_final(node)){
+        return node;
     }
-
+    int i,j;
+    for(i=0;i<DIM;i++){
+        for(j=0;j<DIM;j++){
+            if(node->sudo[i][j] == 0){
+                int k;
+                for(k=1;k<=DIM;k++){
+                    Node* new_node = copy_node(node);
+                    new_node->sudo[i][j] = k;
+                    (*cont)++;
+                    if(is_valid(new_node)){
+                        Node* sol = DFS(new_node, cont);
+                        if(sol != NULL){
+                            return sol;
+                        }
+                    }
+                    free_node(new_node);
+                }
+                return NULL; // se agrega esta línea en caso de no encontrar solución
+            }
+        }
+    }
     return NULL;
 }
-
 
 
 
