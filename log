@@ -780,3 +780,16 @@ Tue 02 May 2023 05:30:44 AM UTC:
  tests:  5|3
 total_score: 35/70
 ff4f9a8
+Tue 02 May 2023 05:32:35 AM UTC: 
+ sudoku.c | 33 +++++++++++----------------------
+ 1 file changed, 11 insertions(+), 22 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:59:9: error: redefinition of ‘valido’
+   59 |     int valido[10] = {0};
+      |         ^~~~~~
+sudoku.c:51:9: note: previous definition of ‘valido’ with type ‘int[10]’
+   51 |     int valido[10] = {0};
+      |         ^~~~~~
+Compilation failed
+62959d7
