@@ -132,8 +132,6 @@ Node* DFS(Node* initial, int* cont){
   Stack* S = createStack();
 
   push(S, initial);
-  if(top(S)==NULL)
-    puts("kk");
   while(top(S)!=NULL)
   {
     Node *auxEstado = top(S);
@@ -141,11 +139,12 @@ Node* DFS(Node* initial, int* cont){
     if(is_final(auxEstado))
       return auxEstado;
 
-    List *listaNodosAdj = get_adj_nodes(auxEstado);
-    for(Node *auxNodo = first(listaNodosAdj); auxNodo!=NULL ; auxNodo = next(listaNodosAdj))
-    {
-      push(S, auxNodo); 
-    }
+     List* adjacentNodes = get_adjacent_nodes(current);
+        while (adjacentNodes != NULL) {
+            push(S, adjacentNodes);
+            adjacentNodes = next(adjacentNodes);
+        }
+
 
     free(auxEstado);
     (*cont)++;
