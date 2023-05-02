@@ -137,6 +137,7 @@ Node* DFS(Node* initial, int* cont){
   {
     Node *auxEstado = top(S);
     pop(S);
+    printf("%p", auxEstado);
     if(is_final(auxEstado))
       return auxEstado;
 
