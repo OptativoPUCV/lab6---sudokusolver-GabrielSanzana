@@ -108,6 +108,7 @@ List* get_adj_nodes(Node* n){
                    else
                       free(nodo); 
                }
+             break;
            }
        }
        if(n->sudo[i][j]==0) break;
