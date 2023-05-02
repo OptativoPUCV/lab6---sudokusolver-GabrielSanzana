@@ -656,3 +656,27 @@ Tue 02 May 2023 05:10:36 AM UTC:
  tests:  5|3
 total_score: 35/70
 b71833a
+Tue 02 May 2023 05:11:07 AM UTC: 
+ sudoku.c | 23 +++++++++--------------
+ 1 file changed, 9 insertions(+), 14 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:69:8: error: ‘subgrid’ undeclared (first use in this function)
+   69 |   for (subgrid = 0; subgrid < 9; subgrid++) {
+      |        ^~~~~~~
+sudoku.c:69:8: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:47:22: error: unused variable ‘p’ [-Werror=unused-variable]
+   47 |   int *valido, i, j, p;
+      |                      ^
+sudoku.c:47:19: error: unused variable ‘j’ [-Werror=unused-variable]
+   47 |   int *valido, i, j, p;
+      |                   ^
+sudoku.c:47:16: error: unused variable ‘i’ [-Werror=unused-variable]
+   47 |   int *valido, i, j, p;
+      |                ^
+sudoku.c:47:8: error: unused variable ‘valido’ [-Werror=unused-variable]
+   47 |   int *valido, i, j, p;
+      |        ^~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+d81188e
