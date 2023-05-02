@@ -105,10 +105,13 @@ List* get_adj_nodes(Node* n){
                    nodo->sudo[i][j] = valor;
                    if(is_valid(nodo))
                     pushBack(lista, nodo);
+                   else
+                     free(nodo);
                }
-          
+               break;
            }
        }
+       if(n->sudo[i][j]==0) break;
    }
    return lista;
 }
