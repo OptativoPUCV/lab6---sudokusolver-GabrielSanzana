@@ -58,27 +58,27 @@ int is_valid(Node* n){
             valido[n->sudo[i][j]] = 1;
         }
       }
-    free(valido);
-    valido = calloc(sizeof(int),10);
-      for(j=0;j<9;j++)
-      {           
-        if(n->sudo[j][i] !=0)
-        {
-          if(valido[n->sudo[j][i]] == 1 )
-            return 0;
-          else
-            valido[n->sudo[j][i]] = 1;
-        }
-      }
-    free(valido);
-    valido = calloc(sizeof(int),10);
   }
   
   free(valido);
+  valido = calloc(sizeof(int),10);
   
+  for(j=0;j<9;j++)
+  {           
+    if(n->sudo[j][i] !=0)
+    {
+      if(valido[n->sudo[j][i]] == 1 )
+        return 0;
+      else
+        valido[n->sudo[j][i]] = 1;
+    }
+  }
+  
+  free(valido);
+  valido = calloc(sizeof(int),10);
+
   for(int k=0 ; k<9 ; k++)
   {
-    valido = calloc(sizeof(int),10);
     for(p=0;p<9;p++){
       i=3*(k/3) + (p/3) ;
       j=3*(k%3) + (p%3) ;
@@ -90,9 +90,15 @@ int is_valid(Node* n){
           valido[n->sudo[i][j]] = 1;
       }
     }
+    free(valido);
+    valido = calloc(sizeof(int),10);
   }
+  
+  free(valido);
+  
   return 1;
 }
+
 
 
 List* get_adj_nodes(Node* n){
