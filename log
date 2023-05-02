@@ -1256,3 +1256,17 @@ Tue 02 May 2023 04:09:15 PM UTC:
  tests:  7|1
 total_score: 55/70
 cbe2db5
+Tue 02 May 2023 04:10:31 PM UTC: 
+ sudoku.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:116:19: error: array subscript 9 is above array bounds of ‘int[9]’ [-Werror=array-bounds]
+  116 |      if(n->sudo[i][j]==0)
+      |         ~~~~~~~~~~^~~
+sudoku.c:7:8: note: while referencing ‘sudo’
+    7 |    int sudo[9][9];
+      |        ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+b97a900
