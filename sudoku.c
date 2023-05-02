@@ -51,19 +51,25 @@ int is_valid(Node* n){
     valido = calloc(sizeof(int),10);
       for(j=0;j<9;j++)
       {           
-        if(valido[n->sudo[i][j]] == 1)
-          return 0;
-        else
-          valido[n->sudo[i][j]] = 1;
+        if(n->sudo[i][j] !=0)
+        {
+          if(valido[n->sudo[i][j]] == 1)
+            return 0;
+          else
+            valido[n->sudo[i][j]] = 1;
+        }
       }
   
     valido = calloc(sizeof(int),10);
       for(j=0;j<9;j++)
       {           
-        if(valido[n->sudo[j][i]] == 1 )
-          return 0;
-        else
-          valido[n->sudo[j][i]] = 1;
+        if(n->sudo[j][i] !=0)
+        {
+          if(valido[n->sudo[j][i]] == 1 )
+            return 0;
+          else
+            valido[n->sudo[j][i]] = 1;
+        }
       }
   
   }
