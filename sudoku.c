@@ -44,11 +44,11 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n) {
-    int i, j, k, valido[10] = {0};
+    int i, j, k, valido[10];
 
     // Validamos las filas y las columnas
     for (i = 0; i < 9; i++) {
-        memset(valido, 0, sizeof(valido));
+        valido = {0};
         for (j = 0; j < 9; j++) {
             if (n->sudo[i][j] == 0) continue;
             if (valido[n->sudo[i][j]]) return 0;
@@ -60,7 +60,7 @@ int is_valid(Node* n) {
 
     // Validamos las submatrices
     for (k = 0; k < 9; k++) {
-        memset(valido, 0, sizeof(valido));
+        valido = {0};
         for (i = 3 * (k / 3); i < 3 * (k / 3) + 3; i++) {
             for (j = 3 * (k % 3); j < 3 * (k % 3) + 3; j++) {
                 if (n->sudo[i][j] == 0) continue;
