@@ -120,38 +120,43 @@ List* get_adj_nodes(Node* n){
    return lista;
 }
 
-int is_final(Node* n){
-  for(int i = 0 ; i < 9 ; i++)
-    for(int j = 0 ; j < 9 ; j++)
-      if(n->sudo[i][j]==0)
+// Función que determina si un nodo es final
+int is_final(Node *n) {
+  for (int i = 0; i < 9; i++) {
+    for (int j = 0; j < 9; j++) {
+      if (n->sudoku[i][j] == 0) {
         return 0;
+      }
+    }
+  }
   return 1;
 }
 
-Node* DFS(Node* initial, int* cont){
+// Función de búsqueda en profundidad (DFS)
+Node* DFS(Node* initial, int* cont) {
   Stack* S = createStack();
-
   push(S, initial);
-
-  while(S!=NULL)
-  {
+  
+  while (S != NULL) {
     Node *auxEstado = top(S);
     pop(S);
-    if(is_final(auxEstado))
+    
+    if (is_final(auxEstado)) {
       return auxEstado;
-
-    List *listaNodosAdj = get_adj_nodes(auxEstado);
-    for(Node *auxNodo = first(listaNodosAdj); auxNodo!=NULL ; auxNodo = next(listaNodosAdj))
-    {
-      push(S, auxNodo); 
     }
-
+    
+    List *listaNodosAdj = get_adj_nodes(auxEstado);
+    for (Node *auxNodo = first(listaNodosAdj); auxNodo != NULL; auxNodo = next(listaNodosAdj)) {
+      push(S, auxNodo);
+    }
+    
     free(auxEstado);
     (*cont)++;
   }
-
+  
   return NULL;
 }
+
 
 
 

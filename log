@@ -932,3 +932,14 @@ Tue 02 May 2023 06:11:13 AM UTC:
  1 file changed, 19 insertions(+), 22 deletions(-)
  tests:  0|0
 b49910d
+Tue 02 May 2023 06:16:27 AM UTC: 
+ sudoku.c | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_final’:
+sudoku.c:127:14: error: ‘Node’ has no member named ‘sudoku’; did you mean ‘sudo’?
+  127 |       if (n->sudoku[i][j] == 0) {
+      |              ^~~~~~
+      |              sudo
+Compilation failed
+defd2ea
