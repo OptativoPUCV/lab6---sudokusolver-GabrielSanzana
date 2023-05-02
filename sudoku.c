@@ -106,9 +106,9 @@ List* get_adj_nodes(Node* n){
                    if(is_valid(nodo))
                     pushBack(lista, nodo);
                }
+               break;
            }
        }
-       if(n->sudo[i][j]==0) break;
    }
    return lista;
 }
