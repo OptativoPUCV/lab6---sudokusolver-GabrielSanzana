@@ -45,7 +45,7 @@ void print_node(Node* n){
 
 int is_valid(Node* n){
   int *valido, i, j, p;
-
+  printf("%d \n",n->sudo[0][2]);
   for(i=0;i<9;i++)
   {
     
