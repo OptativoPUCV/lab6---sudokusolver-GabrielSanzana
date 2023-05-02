@@ -1181,3 +1181,9 @@ sudoku.c:7:8: note: while referencing ‘sudo’
 cc1: all warnings being treated as errors
 Compilation failed
 3bea2e3
+Tue 02 May 2023 03:50:41 PM UTC: 
+ sudoku.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+ tests:  7|1
+total_score: 55/70
+009c0f9
