@@ -44,8 +44,7 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-  int *valido, i, j, p;
- int row, col;
+  int row, col, subgrid;
    // Validamos las filas
     for (row = 0; row < 9; row++) {
         int nums[10] = {0};
