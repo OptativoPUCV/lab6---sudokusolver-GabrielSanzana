@@ -66,23 +66,18 @@ int is_valid(Node* n){
     free(valido);
   
   }
-
-  for(int k=0 ; k<9 ; k++)
-  {
-    valido = calloc(sizeof(int),10);
-    for(p=0;p<9;p++){
-      if(n->sudo[i][j] !=0)
-      {
-        i=3*(k/3) + (p/3) ;
-        j=3*(k%3) + (p%3) ;
-        if(valido[n->sudo[i][j]] == 1 )
-          return 0;
-        else
-          valido[n->sudo[i][j]] = 1;
-      }
+    int row=8, col=8;
+   for (int subgrid = 0; subgrid < 9; subgrid++) {
+        int nums[10] = {0};
+        for (int p = 0; p < 9; p++) {
+            row = 3 * (subgrid / 3) + (p / 3);
+            col = 3 * (subgrid % 3) + (p % 3);
+            int num = n->sudo[row][col];
+            if (num == 0) continue;
+            if (nums[num]) return 0;
+            nums[num] = 1;
+        }
     }
-    free(valido);
-  }
   return 1;
 }
 
