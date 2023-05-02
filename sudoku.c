@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include "list.h"
 
 
@@ -99,11 +98,9 @@ int is_valid(Node* n){
 List* get_adj_nodes(Node* n){
    List* lista=createList();
    int i, j;
-   bool hay_casilla_vacia = false;
    for(i=0;i<9;i++){
        for(j=0;j<9;j++){
            if(n->sudo[i][j]==0){
-               hay_casilla_vacia = true;
                Node* nodo = copy(n);
                for(int valor=1;valor<=9;valor++){
                    nodo->sudo[i][j] = valor;
@@ -114,15 +111,14 @@ List* get_adj_nodes(Node* n){
                    }
                }
                free(nodo);
+               break;
            }
        }
-   }
-   if (!hay_casilla_vacia) {
-       freeList(lista);
+     if(n->sudo[i][j]==0)
+       break;
    }
    return lista;
 }
-
 
 int is_final(Node* n){
   for(int i = 0 ; i < 9 ; i++)
@@ -132,29 +128,41 @@ int is_final(Node* n){
   return 1;
 }
 
-Node* DFS(Node* initial, int* cont){
-  Stack* S = createStack();
-
-  push(S, initial);
-
-  while(S!=NULL)
-  {
-    Node *auxEstado = top(S);
-    pop(S);
-    if(is_final(auxEstado))
-      return auxEstado;
-
-    List *listaNodosAdj = get_adj_nodes(auxEstado);
-    for(Node *auxNodo = first(listaNodosAdj); auxNodo!=NULL ; auxNodo = next(listaNodosAdj))
-    {
-      push(S, auxNodo); 
+Node* DFS(Node* n, int* cont) {
+    if (n == NULL) {
+        return NULL;
     }
 
-    (*cont)++;
-  }
+    Node* stack = malloc(sizeof(Node));
+    stack->data = n->data;
+    stack->next = NULL;
+    *cont = 0;
 
-  
-  return NULL;
+    while (stack != NULL) {
+        Node* current = stack;
+        stack = stack->next;
+
+        (*cont)++;
+
+        if (current->data == 42) { // Ejemplo de estado final
+            free(current);
+            return n;
+        }
+
+        Node* adjacents = get_adjacent_nodes(current); // Función que devuelve los nodos adyacentes a current
+
+        while (adjacents != NULL) {
+            Node* temp = adjacents;
+            adjacents = adjacents->next;
+
+            temp->next = stack;
+            stack = temp;
+        }
+
+        free(current);
+    }
+
+    return NULL;
 }
 
 
