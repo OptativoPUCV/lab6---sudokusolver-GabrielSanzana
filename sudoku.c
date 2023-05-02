@@ -139,7 +139,7 @@ Node* DFS(Node* initial, int* cont){
     if(is_final(auxEstado))
       return auxEstado;
 
-     List* adjacentNodes = get_adjacent_nodes(auxEstado);
+     List* adjacentNodes = get_adj_nodes(auxEstado);
         while (adjacentNodes != NULL) {
             push(S, adjacentNodes);
             adjacentNodes = next(adjacentNodes);
