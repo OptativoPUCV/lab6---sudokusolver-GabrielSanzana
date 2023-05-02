@@ -96,21 +96,20 @@ int is_valid(Node* n){
 
 
 List* get_adj_nodes(Node* n){
-   List* lista=createList();
+   List* lista = createList();
    int i, j;
-   for(i=0;i<9;i++){
-       for(j=0;j<9;j++){
+   for(i=0; i<9; i++){
+       for(j=0; j<9; j++){
            if(n->sudo[i][j]==0){
-               Node* nodo = copy(n);
-               for(int valor=1;valor<=9;valor++){
+               for(int valor=1; valor<=9; valor++){
+                   Node* nodo = copy(n);
                    nodo->sudo[i][j] = valor;
-                   if(is_valid(nodo))
-                   {
-                    pushBack(lista, nodo);
-                    nodo = copy(nodo);
+                   if(is_valid(nodo)) {
+                       pushBack(lista, nodo);
+                   } else {
+                       free(nodo);
                    }
                }
-               free(nodo);
                break;
            }
        }
@@ -120,6 +119,7 @@ List* get_adj_nodes(Node* n){
    return lista;
 }
 
+
 int is_final(Node* n){
   for(int i = 0 ; i < 9 ; i++)
     for(int j = 0 ; j < 9 ; j++)
@@ -128,41 +128,29 @@ int is_final(Node* n){
   return 1;
 }
 
-Node* DFS(Node* n, int* cont) {
-    if (n == NULL) {
-        return NULL;
+Node* DFS(Node* initial, int* cont){
+  Stack* S = createStack();
+
+  push(S, initial);
+
+  while(S!=NULL)
+  {
+    Node *auxEstado = top(S);
+    pop(S);
+    if(is_final(auxEstado))
+      return auxEstado;
+
+    List *listaNodosAdj = get_adj_nodes(auxEstado);
+    for(Node *auxNodo = first(listaNodosAdj); auxNodo!=NULL ; auxNodo = next(listaNodosAdj))
+    {
+      push(S, auxNodo); 
     }
 
-    Node* stack = malloc(sizeof(Node));
-    stack->data = n->data;
-    stack->next = NULL;
-    *cont = 0;
+    (*cont)++;
+  }
 
-    while (stack != NULL) {
-        Node* current = stack;
-        stack = stack->next;
-
-        (*cont)++;
-
-        if (current->data == 42) { // Ejemplo de estado final
-            free(current);
-            return n;
-        }
-
-        Node* adjacents = get_adjacent_nodes(current); // Función que devuelve los nodos adyacentes a current
-
-        while (adjacents != NULL) {
-            Node* temp = adjacents;
-            adjacents = adjacents->next;
-
-            temp->next = stack;
-            stack = temp;
-        }
-
-        free(current);
-    }
-
-    return NULL;
+  
+  return NULL;
 }
 
 
