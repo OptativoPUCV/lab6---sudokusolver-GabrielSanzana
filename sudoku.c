@@ -45,27 +45,27 @@ void print_node(Node* n){
 
 int is_valid(Node* n){
   int *valido, i, j, p;
-
-  for(i=0;i<9;i++)
-  {
-    valido = calloc(sizeof(int),10);
-      for (j = 0; j < 9; j++) {
-            int num = n->sudo[i][j];
+ int row, col, subgrid;
+   // Validamos las filas
+    for (row = 0; row < 9; row++) {
+        int nums[10] = {0};
+        for (col = 0; col < 9; col++) {
+            int num = n->sudo[row][col];
             if (num == 0) continue;
-            if (valido[num]) return 0;
-            valido[num] = 1;
+            if (nums[num]) return 0;
+            nums[num] = 1;
         }
-    free(valido);
-    valido = calloc(sizeof(int),10);
-      for (j = 0; j < 9; j++) {
-            int num = n->sudo[j][i];
+    }
+    // Validamos las columnas
+    for (col = 0; col < 9; col++) {
+        int nums[10] = {0};
+        for (row = 0; row < 9; row++) {
+            int num = n->sudo[row][col];
             if (num == 0) continue;
-            if (valido[num]) return 0;
-            valido[num] = 1;
+            if (nums[num]) return 0;
+            nums[num] = 1;
         }
-    free(valido);
-  
-  }
+    }
 
   for(int k=0 ; k<9 ; k++)
   {
