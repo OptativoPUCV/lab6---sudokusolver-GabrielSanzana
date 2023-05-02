@@ -856,3 +856,14 @@ Tue 02 May 2023 05:57:37 AM UTC:
  1 file changed, 9 insertions(+)
  tests:  0|0
 de19925
+Tue 02 May 2023 05:59:07 AM UTC: 
+ sudoku.c | 1 +
+ 1 file changed, 1 insertion(+)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:143:11: error: unused variable ‘listaNodosAdj’ [-Werror=unused-variable]
+  143 |     List *listaNodosAdj = get_adj_nodes(auxEstado);
+      |           ^~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+4712d5b
