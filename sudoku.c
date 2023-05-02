@@ -146,7 +146,6 @@ Node* DFS(Node* initial, int* cont){
       push(S, auxNodo); 
     }
 
-    free(auxEstado);
     (*cont)++;
   }
 
