@@ -1143,3 +1143,16 @@ sudoku.c:142:47: note: each undeclared identifier is reported only once for each
 cc1: all warnings being treated as errors
 Compilation failed
 c9c616f
+Tue 02 May 2023 07:00:53 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:142:28: error: implicit declaration of function ‘get_adjacent_nodes’; did you mean ‘get_adj_nodes’? [-Werror=implicit-function-declaration]
+  142 |      List* adjacentNodes = get_adjacent_nodes(auxEstado);
+      |                            ^~~~~~~~~~~~~~~~~~
+      |                            get_adj_nodes
+sudoku.c:142:28: error: initialization of ‘List *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+cc1: all warnings being treated as errors
+Compilation failed
+bd54908
