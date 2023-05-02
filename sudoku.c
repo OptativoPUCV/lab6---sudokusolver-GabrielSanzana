@@ -43,55 +43,43 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
-  int *valido, i, j, p;
-
-  for(i=0;i<9;i++)
-  {
-    valido = calloc(sizeof(int),10);
-      for(j=0;j<9;j++)
-      {           
-        if(n->sudo[i][j] !=0)
-        {
-          if(valido[n->sudo[i][j]] == 1)
-            return 0;
-          else
-            valido[n->sudo[i][j]] = 1;
+int is_valid(Node * n){
+    int row, col, subgrid;
+    // Validamos las filas
+    for (row = 0; row < 9; row++) {
+        int nums[10] = {0};
+        for (col = 0; col < 9; col++) {
+            int num = n->sudo[row][col];
+            if (num == 0) continue;
+            if (nums[num]) return 0;
+            nums[num] = 1;
         }
-      }
-    free(valido);
-    valido = calloc(sizeof(int),10);
-      for(j=0;j<9;j++)
-      {           
-        if(n->sudo[j][i] !=0)
-        {
-          if(valido[n->sudo[j][i]] == 1 )
-            return 0;
-          else
-            valido[n->sudo[j][i]] = 1;
-        }
-      }
-    free(valido);
-  }
-
-  for(int k=0 ; k<9 ; k++)
-  {
-    for(p=0;p<9;p++){
-      i=3*(k/3) + (p/3) ;
-      j=3*(k%3) + (p%3) ;
-      valido = calloc(sizeof(int),10);
-      if(n->sudo[i][j] !=0)
-      {
-        if(valido[n->sudo[i][j]] == 1 )
-          return 0;
-        else
-          valido[n->sudo[i][j]] = 1;
-      }
-      free(valido);
     }
-  }
-  return 1;
+    // Validamos las columnas
+    for (col = 0; col < 9; col++) {
+        int nums[10] = {0};
+        for (row = 0; row < 9; row++) {
+            int num = n->sudo[row][col];
+            if (num == 0) continue;
+            if (nums[num]) return 0;
+            nums[num] = 1;
+        }
+    }
+    // Validamos las submatrices
+    for (subgrid = 0; subgrid < 9; subgrid++) {
+        int nums[10] = {0};
+        for (int p = 0; p < 9; p++) {
+            row = 3 * (subgrid / 3) + (p / 3);
+            col = 3 * (subgrid % 3) + (p % 3);
+            int num = n->sudo[row][col];
+            if (num == 0) continue;
+            if (nums[num]) return 0;
+            nums[num] = 1;
+        }
+    }
+    return 1;
 }
+
 
 
 List* get_adj_nodes(Node* n){
