@@ -121,7 +121,6 @@ List* get_adj_nodes(Node* n){
 
 
 int is_final(Node* n){
-  puts("entra");
   for(int i = 0 ; i < 9 ; i++)
     for(int j = 0 ; j < 9 ; j++)
       if(n->sudo[i][j]==0)
@@ -133,13 +132,12 @@ Node* DFS(Node* initial, int* cont){
   Stack* S = createStack();
 
   push(S, initial);
-  while(top(S)!=NULL)
+  while(sizeof(S) != 0)
   {
     Node *auxEstado = top(S);
     pop(S);
     if(is_final(auxEstado))
     {
-      puts("entra");
       return auxEstado;
     }
 
