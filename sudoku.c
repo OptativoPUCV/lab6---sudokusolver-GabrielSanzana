@@ -132,12 +132,12 @@ Node* DFS(Node* initial, int* cont){
   Stack* S = createStack();
 
   push(S, initial);
-
+  if(top(S)==NULL)
+    puts("kk");
   while(top(S)!=NULL)
   {
     Node *auxEstado = top(S);
     pop(S);
-
     if(is_final(auxEstado))
       return auxEstado;
 
@@ -147,9 +147,10 @@ Node* DFS(Node* initial, int* cont){
       push(S, auxNodo); 
     }
 
-    (*cont)++;
     free(auxEstado);
+    (*cont)++;
   }
+
   
   return NULL;
 }
