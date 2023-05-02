@@ -137,8 +137,10 @@ Node* DFS(Node* initial, int* cont){
   {
     Node *auxEstado = top(S);
     pop(S);
-    if(is_final(auxEstado))
+    if(is_final(auxEstado)){
+      free(S);
       return auxEstado;
+    }
 
     List *listaNodosAdj = get_adj_nodes(auxEstado);
     for(Node *auxNodo = first(listaNodosAdj); auxNodo!=NULL ; auxNodo = next(listaNodosAdj))
@@ -146,13 +148,13 @@ Node* DFS(Node* initial, int* cont){
       push(S, auxNodo); 
     }
 
-    
     (*cont)++;
   }
 
-  
+  free(S);
   return NULL;
 }
+
 
 
 
