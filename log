@@ -1007,3 +1007,31 @@ Tue 02 May 2023 06:36:34 AM UTC:
  1 file changed, 4 insertions(+), 9 deletions(-)
  tests:  0|0
 2bc8644
+Tue 02 May 2023 06:39:09 AM UTC: 
+ sudoku.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:101:4: error: unknown type name ‘bool’
+  101 |    bool hay_casilla_vacia = false;
+      |    ^~~~
+sudoku.c:4:1: note: ‘bool’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+    3 | #include "list.h"
+  +++ |+#include <stdbool.h>
+    4 | 
+sudoku.c:101:29: error: ‘false’ undeclared (first use in this function)
+  101 |    bool hay_casilla_vacia = false;
+      |                             ^~~~~
+sudoku.c:101:29: note: ‘false’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+sudoku.c:101:29: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:105:36: error: ‘true’ undeclared (first use in this function)
+  105 |                hay_casilla_vacia = true;
+      |                                    ^~~~
+sudoku.c:105:36: note: ‘true’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+sudoku.c:120:8: error: implicit declaration of function ‘freeList’; did you mean ‘createList’? [-Werror=implicit-function-declaration]
+  120 |        freeList(lista);
+      |        ^~~~~~~~
+      |        createList
+cc1: all warnings being treated as errors
+Compilation failed
+d0cff93

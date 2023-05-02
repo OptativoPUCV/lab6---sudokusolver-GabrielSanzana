@@ -98,9 +98,11 @@ int is_valid(Node* n){
 List* get_adj_nodes(Node* n){
    List* lista=createList();
    int i, j;
+   bool hay_casilla_vacia = false;
    for(i=0;i<9;i++){
        for(j=0;j<9;j++){
            if(n->sudo[i][j]==0){
+               hay_casilla_vacia = true;
                Node* nodo = copy(n);
                for(int valor=1;valor<=9;valor++){
                    nodo->sudo[i][j] = valor;
@@ -111,14 +113,15 @@ List* get_adj_nodes(Node* n){
                    }
                }
                free(nodo);
-               break;
            }
        }
-     if(n->sudo[i][j]==0)
-       break;
+   }
+   if (!hay_casilla_vacia) {
+       freeList(lista);
    }
    return lista;
 }
+
 
 int is_final(Node* n){
   for(int i = 0 ; i < 9 ; i++)
