@@ -45,14 +45,12 @@ void print_node(Node* n){
 
 int is_valid(Node* n){
   int *valido, i, j, p;
-  printf("%d \n",n->sudo[0][2]);
+
   for(i=0;i<9;i++)
   {
-    
     valido = calloc(sizeof(int),10);
       for(j=0;j<9;j++)
       {           
-        printf("%d ",n->sudo[i][j]);
         if(n->sudo[i][j] !=0)
         {
           if(valido[n->sudo[i][j]] == 1)
@@ -61,7 +59,6 @@ int is_valid(Node* n){
             valido[n->sudo[i][j]] = 1;
         }
       }
-    puts("");
     free(valido);
     valido = calloc(sizeof(int),10);
       for(j=0;j<9;j++)
@@ -108,7 +105,7 @@ List* get_adj_nodes(Node* n){
                    nodo->sudo[i][j] = valor;
                    if(is_valid(nodo))
                    {
-                    
+                    printf("%d\n ",nodo->sudo[i][j]);
                     pushBack(lista, nodo);
                    }
                    else
