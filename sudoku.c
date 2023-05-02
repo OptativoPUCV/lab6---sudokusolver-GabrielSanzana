@@ -48,6 +48,7 @@ int is_valid(Node* n){
 
   for(i=0;i<9;i++)
   {
+    printf("%d\n ",n->sudo[i][j]);
     valido = calloc(sizeof(int),10);
       for(j=0;j<9;j++)
       {           
@@ -105,7 +106,7 @@ List* get_adj_nodes(Node* n){
                    nodo->sudo[i][j] = valor;
                    if(is_valid(nodo))
                    {
-                    printf("%d\n ",nodo->sudo[i][j]);
+                    
                     pushBack(lista, nodo);
                    }
                    else
