@@ -133,6 +133,15 @@ Node* DFS(Node* initial, int* cont){
 
   push(S, initial);
 
+  while(S!=NULL)
+  {
+    Node *auxEstado = top(S);
+    pop(S);
+    if(is_final(auxEstado))
+      return auxEstado;
+    
+  }
+
   return NULL;
 }
 
