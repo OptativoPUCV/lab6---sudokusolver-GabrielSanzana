@@ -147,6 +147,7 @@ Node* DFS(Node* initial, int* cont){
     }
 
     free(auxEstado);
+    (*cont)++;
   }
 
   return NULL;
