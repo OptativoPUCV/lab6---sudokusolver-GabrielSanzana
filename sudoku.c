@@ -102,7 +102,7 @@ List* get_adj_nodes(Node* n){
                     }
                 }
                 // Liberamos la memoria del nuevo nodo que no se agregó a la lista
-                destroyNode(&new_node);
+                free(new_node);
                 // Como ya encontramos la primer casilla vacía, salimos del ciclo
                 goto finish;
             }
