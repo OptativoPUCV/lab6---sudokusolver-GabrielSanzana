@@ -87,7 +87,6 @@ int is_valid(Node* n){
         else
           valido[n->sudo[i][j]] = 1;
       }
-      free(valido);
     }
   }
   return 1;
