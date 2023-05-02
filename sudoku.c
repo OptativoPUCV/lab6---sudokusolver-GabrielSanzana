@@ -137,6 +137,7 @@ Node* DFS(Node* initial, int* cont){
   {
     Node *auxEstado = top(S);
     pop(S);
+
     if(is_final(auxEstado))
       return auxEstado;
 
@@ -146,10 +147,9 @@ Node* DFS(Node* initial, int* cont){
       push(S, auxNodo); 
     }
 
-    free(auxEstado);
     (*cont)++;
+    free(auxEstado);
   }
-
   
   return NULL;
 }
