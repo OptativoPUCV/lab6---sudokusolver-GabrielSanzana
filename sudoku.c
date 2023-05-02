@@ -95,29 +95,31 @@ int is_valid(Node* n){
 }
 
 
-List* get_adj_nodes(Node* n){
-   List* lista = createList();
-   int i, j;
-   for(i=0; i<9; i++){
-       for(j=0; j<9; j++){
-           if(n->sudo[i][j]==0){
-               for(int valor=1; valor<=9; valor++){
-                   Node* nodo = copy(n);
-                   nodo->sudo[i][j] = valor;
-                   if(is_valid(nodo)) {
-                       pushBack(lista, nodo);
-                   } else {
-                       free(nodo);
-                   }
-               }
-               break;
-           }
-       }
-     if(n->sudo[i][j]==0)
-       break;
-   }
-   return lista;
+List* get_adj_nodes(Node* n) {
+  List* lista = createList();
+  int i, j;
+  for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+      if (n->sudo[i][j] == 0) {
+        for (int valor = 1; valor <= 9; valor++) {
+          Node* nodo = copy(n);
+          nodo->sudo[i][j] = valor;
+          if (is_valid(nodo)) {
+            pushBack(lista, nodo);
+          } else {
+            free(nodo);
+          }
+        }
+        break;
+      }
+    }
+    if (n->sudo[i][j] == 0) {
+      break;
+    }
+  }
+  return lista;
 }
+
 
 
 int is_final(Node* n){
