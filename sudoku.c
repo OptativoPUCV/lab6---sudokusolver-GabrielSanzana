@@ -48,10 +48,11 @@ int is_valid(Node* n){
 
   for(i=0;i<9;i++)
   {
-    printf("%d\n ",n->sudo[i][j]);
+    
     valido = calloc(sizeof(int),10);
       for(j=0;j<9;j++)
       {           
+        printf("%d\n ",nodo->sudo[i][j]);
         if(n->sudo[i][j] !=0)
         {
           if(valido[n->sudo[i][j]] == 1)

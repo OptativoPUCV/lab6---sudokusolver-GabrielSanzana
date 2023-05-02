@@ -394,3 +394,14 @@ sudoku.c:7:8: note: while referencing ‘sudo’
 cc1: all warnings being treated as errors
 Compilation failed
 705d3c6
+Tue 02 May 2023 04:26:21 AM UTC: 
+ sudoku.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:55:24: error: ‘nodo’ undeclared (first use in this function)
+   55 |         printf("%d\n ",nodo->sudo[i][j]);
+      |                        ^~~~
+sudoku.c:55:24: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+b98f79d
