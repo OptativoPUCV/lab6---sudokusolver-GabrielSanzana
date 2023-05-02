@@ -133,7 +133,8 @@ Node* DFS(Node* initial, int* cont){
 
   push(S, initial);
   while(is_empty(S))
-  {
+  {  
+    printf("%d", (*cont));
     Node *auxEstado = top(S);
     pop(S);
     if(is_final(auxEstado))
