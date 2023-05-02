@@ -143,9 +143,10 @@ Node* DFS(Node* initial, int* cont){
     List *listaNodosAdj = get_adj_nodes(auxEstado);
     for(Node *auxNodo = first(listaNodosAdj); auxNodo!=NULL ; auxNodo = next(listaNodosAdj))
     {
-      push(S, auxNodo);
-      
+      push(S, auxNodo); 
     }
+
+    free(auxEstado);
   }
 
   return NULL;
