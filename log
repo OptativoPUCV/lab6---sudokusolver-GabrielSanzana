@@ -453,3 +453,14 @@ Tue 02 May 2023 04:44:18 AM UTC:
  tests:  5|3
 total_score: 35/70
 2716873
+Tue 02 May 2023 04:44:45 AM UTC: 
+ sudoku.c | 38 +++++++++++++++++++++++---------------
+ 1 file changed, 23 insertions(+), 15 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:105:17: error: implicit declaration of function ‘destroyNode’ [-Werror=implicit-function-declaration]
+  105 |                 destroyNode(&new_node);
+      |                 ^~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+87e9834
