@@ -882,3 +882,29 @@ Tue 02 May 2023 06:05:34 AM UTC:
  1 file changed, 1 insertion(+)
  tests:  0|0
 54a1bfe
+Tue 02 May 2023 06:05:47 AM UTC: 
+ sudoku.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:135:13: error: implicit declaration of function ‘isEmpty’; did you mean ‘is_empty’? [-Werror=implicit-function-declaration]
+  135 |     while (!isEmpty(S)) {
+      |             ^~~~~~~
+      |             is_empty
+sudoku.c:143:9: error: unknown type name ‘NodeList’
+  143 |         NodeList* adjacentNodes = get_adjacent_nodes(current);
+      |         ^~~~~~~~
+sudoku.c:143:35: error: implicit declaration of function ‘get_adjacent_nodes’; did you mean ‘get_adj_nodes’? [-Werror=implicit-function-declaration]
+  143 |         NodeList* adjacentNodes = get_adjacent_nodes(current);
+      |                                   ^~~~~~~~~~~~~~~~~~
+      |                                   get_adj_nodes
+sudoku.c:143:35: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+sudoku.c:145:34: error: request for member ‘node’ in something not a structure or union
+  145 |             push(S, adjacentNodes->node);
+      |                                  ^~
+sudoku.c:146:42: error: request for member ‘next’ in something not a structure or union
+  146 |             adjacentNodes = adjacentNodes->next;
+      |                                          ^~
+cc1: all warnings being treated as errors
+Compilation failed
+fa6ba88
