@@ -100,18 +100,17 @@ List* get_adj_nodes(Node* n){
    for(i=0;i<9;i++){
        for(j=0;j<9;j++){
            if(n->sudo[i][j]==0){
+               Node* nodo = copy(n);
                for(int valor=1;valor<=9;valor++){
-                   Node* nodo = copy(n);
                    nodo->sudo[i][j] = valor;
                    if(is_valid(nodo))
                    {
                     printf("%d\n ",nodo->sudo[i][j]);
                     pushBack(lista, nodo);
+                    nodo = copy(nodo);
                    }
-                   else
-                    free(nodo);
                }
-         
+               free(nodo);
            }
        }
    }
