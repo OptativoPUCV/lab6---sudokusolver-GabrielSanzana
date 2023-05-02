@@ -132,7 +132,7 @@ Node* DFS(Node* initial, int* cont){
   Stack* S = createStack();
 
   push(S, initial);
-  while(is_empty(S))
+  while(top(S)!=NULL)
   {  
     printf("%d", (*cont));
     Node *auxEstado = top(S);
