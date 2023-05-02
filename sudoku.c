@@ -66,7 +66,7 @@ int is_valid(Node* n){
     free(valido);
   
   }
-
+  printf("%d %d\n",i,j);
   for(int k=0 ; k<9 ; k++)
   {
     valido = calloc(sizeof(int),10);
