@@ -141,7 +141,7 @@ Node* DFS(Node* initial, int* cont){
       return auxEstado;
     }
 
-    List* listaNodosAdj=get_adj_nodes(n);
+    List* listaNodosAdj=get_adj_nodes(auxEstado);
     Node *auxNodo= first(listaNodosAdj);
     while(auxNodo)
     {
