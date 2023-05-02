@@ -73,10 +73,13 @@ int is_valid(Node* n){
     for(p=0;p<9;p++){
         i=3*(k/3) + (p/3) ;
         j=3*(k%3) + (p%3) ;
+        if(valido[n->sudo[i][j]] != 0 )
+        {
         if(valido[n->sudo[i][j]] == 1 )
           return 0;
         else
           valido[n->sudo[i][j]] = 1;
+        }
     }
   }
   return 1;
